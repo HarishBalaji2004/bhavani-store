@@ -1,0 +1,203 @@
+/* 
+ * globals.css - Design tokens and CSS variables only
+ * No utility classes - all styling done via Tailwind in components
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 45 25% 97%;
+    --foreground: 20 30% 15%;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 20 30% 15%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 30% 15%;
+
+    /* Primary - Earth Brown */
+    --primary: 25 60% 35%;
+    --primary-foreground: 45 25% 97%;
+
+    /* Secondary - Warm Beige */
+    --secondary: 40 40% 90%;
+    --secondary-foreground: 20 30% 20%;
+
+    /* Muted */
+    --muted: 40 20% 93%;
+    --muted-foreground: 20 15% 45%;
+
+    /* Accent - Field Green */
+    --accent: 120 35% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 25 60% 35%;
+
+    /* Border radius */
+    --radius: 0.5rem;
+
+    /* Agricultural palette */
+    --earth-brown: 25 55% 35%;
+    --harvest-gold: 43 85% 55%;
+    --field-green: 120 38% 40%;
+    --warm-beige: 38 45% 90%;
+    --deep-earth: 20 45% 18%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(25, 60%, 30%) 0%,
+      hsl(20, 55%, 22%) 50%,
+      hsl(30, 50%, 28%) 100%
+    );
+    --gradient-card: linear-gradient(
+      135deg,
+      hsl(43, 85%, 92%) 0%,
+      hsl(38, 45%, 95%) 100%
+    );
+    --gradient-warm: linear-gradient(
+      135deg,
+      hsl(38, 45%, 90%) 0%,
+      hsl(43, 45%, 93%) 100%
+    );
+
+    /* Shadows */
+    --shadow-warm: 0 4px 20px rgba(139, 69, 19, 0.12),
+      0 2px 8px rgba(139, 69, 19, 0.08);
+    --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.06),
+      0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .dark {
+    --background: 20 30% 8%;
+    --foreground: 45 20% 92%;
+
+    --card: 20 25% 12%;
+    --card-foreground: 45 20% 92%;
+
+    --popover: 20 25% 12%;
+    --popover-foreground: 45 20% 92%;
+
+    --primary: 43 75% 55%;
+    --primary-foreground: 20 30% 8%;
+
+    --secondary: 20 20% 18%;
+    --secondary-foreground: 45 20% 85%;
+
+    --muted: 20 20% 16%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 120 35% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 20 20% 22%;
+    --input: 20 20% 22%;
+    --ring: 43 75% 55%;
+
+    --earth-brown: 25 50% 55%;
+    --harvest-gold: 43 85% 60%;
+    --field-green: 120 40% 50%;
+    --warm-beige: 20 20% 16%;
+    --deep-earth: 20 30% 85%;
+
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(25, 50%, 20%) 0%,
+      hsl(20, 45%, 14%) 50%,
+      hsl(30, 40%, 18%) 100%
+    );
+    --gradient-card: linear-gradient(
+      135deg,
+      hsl(20, 25%, 14%) 0%,
+      hsl(25, 20%, 16%) 100%
+    );
+    --gradient-warm: linear-gradient(
+      135deg,
+      hsl(20, 20%, 14%) 0%,
+      hsl(25, 18%, 16%) 100%
+    );
+
+    --shadow-warm: 0 4px 20px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  /* Improved text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
